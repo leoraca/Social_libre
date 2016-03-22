@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block nav %} <nav class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Chisme</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/gestionchismes/logoff/">Log out<span class="sr-only">(current)</span></a></li>
+            <li><a href="/gestionchismes/crearchisme/">Nuevo Chisme</a></li>
+            <li class="dropdown">
+              <a href="/gestionchismes/mischismes/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Cuenta <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+              </ul>
+
+            </li>
+          </ul>
+         
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+{% endblock %}
+{% block Siguiendo %}
+<ul class="list-group">
+<li class="list-group-item Titulo">Siguiendo</li>
+  {% for siguiendo in siguiendos%}
+  <li class="list-group-item">{{siguiendo.username]]<h4 class="Botones"> <button type="submit" class="btn btn-default fondo" >Dejar de seguir</button></h4>
+  }
+</li>
+{% endfor %}
+{% endblock %}
+
+  {% block Mensaje %}
+
+{% for mensaje in Mensajes %}
+  <div class="list-group">
+  <a class="list-group-item active">
+    <h4 class="Chisme">{{mensaje.texto}}</h4>
+    <p class="Fecha">{{mensaje.fecha_registro}}
+     <h4 class="Botones"> <button type="submit" class="btn btn-default">Eliminar</button></p></h4>
+
+  </a>
+</div>
+{% endfor %}
+  {% endblock %}

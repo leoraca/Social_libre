@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+    {% block nav %}
+     <nav class="navbar navbar-default" role="navigation">
+          <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/">Chisme</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="/gestionchismes/logoff/">Log out<span class="sr-only center-block">(current)</span></a></li>
+                <li><a href="/gestionchismes/crearchisme/">Nuevo Chisme</a></li>
+                <li class="dropdown">
+                  <a href="/gestionchismes/cuenta/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Cuenta <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                  </ul>
+
+                </li>
+              </ul>
+               <form class="navbar-form navbar-right" action="/gestionchismes/buscapersonalizada/" method="get">
+        <div class="form-group">
+          <input type="text" name="q" class="form-control" placeholder="Nombre de usuario">
+        </div>
+        <button type="submit" class="btn btn-default">Buscar</button>
+      </form>
+                  </ul>
+                </li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+    {% endblock %}
+
+{% block Siguiendo %}
+
+            <div class="well well-sm">
+                <div class="media">
+                 
+                    <div class="media-body center-block">
+                        <h4 class="media-heading">{{seguido.username}}</h4>
+
+
+                          <span class="label label-info pull-left">siguiendo a {{siguiendo.count}}</span> 
+                          <span class="label label-warning pull-right">{{seguido.seguidores.count}} Seguidores</span>
+                         <br><br>
+                         
+                            <p>
+                                <a href="/gestionchismes/crearchisme" class="btn btn-xs btn-default center-block">
+                                <span class="glyphicon glyphicon-comment "></span>Nuevo</a>
+                                <a href="/gestionchismes/cuenta/" class="btn btn-xs btn-default center-block"><span class="glyphicon glyphicon-heart"></span>Tu</a>
+                                <a href="/gestionchismes/baja/{{seguido.username}}/" class="btn btn-xs btn-default center-block"><span class="glyphicon glyphicon-ban-circle"></span>Darse de baja</a>
+                            </p>
+                    </div>
+                </div>
+
+            </div>
+
+    
+   var leo=12       
+      
+{% endblock %}
+  {% block Mensaje %}
+
+{% for mensaje in Mensajes %}
+
+  <div class="list-group">
+    <div class="list-group-item active">
+      <h4 class="Chismero">{{mensaje.username}}</h4>
+      <h4 class="Chisme">{{mensaje.texto}}</h4>
+      <p class="Fecha">{{mensaje.fecha_registro}}</p>
+       <a href="/gestionchismes/fav/{{seguido.username}}/{{mensaje.mensaje_id}}/"> <button class="btn btn-default" type="submit">
+       <span class="glyphicon glyphicon-heart"></span>  {{mensaje.num_favorito}} 
+       </button>
+       <a href="/gestionchismes/retuit/{{seguido.username}}/{{mensaje.mensaje_id}}/"> <button class="btn btn-default" type="submit">
+       <span class="glyphicon glyphicon-retweet"></span>  {{mensaje.num_retweet}} 
+       </button>
+       </a>
+     
+    </div>
+
+  </div>
+
+{% endfor %}
+{% endblock %}
+
+
+
+  {% block Seguidores %}
+    <ul class="list-group">
+      <li class="list-group-item Titulo">A quien seguir:</li>
+        {% for elegido in elegidos %}
+         <li class="list-group-item">{{elegido.username}}<a href="/gestionchismes/seguir/{{elegido.username}}/">
+  <ul class="botondejarseguir"><button type="submit" class="btn btn-default">seguir</button></a></li></ul>
+{% endfor %}
+</ul>
+  {% endblock %}

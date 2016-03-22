@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block nav %} <nav class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Chisme</a>
+        </div>
+    </nav>
+{% endblock %}
+{% block Right %}
+<div class="alert">
+{{form.errors}}
+</div>
+{% endblock %}
+{% block Center %}  
+<div class="fondo">
+<form role="form" action="{% url 'create' %}" method="post">{% csrf_token %}
+	
+    <div class="form-group">
+    <label for="email">  Email:</label>
+    <p>{{form.email}}</p>
+  </div>
+  <div class="form-group">
+    <label for="username">Username</label>
+    <p>{{form.username}}</p>
+  </div>
+  <div class="form-group">
+    <label for="password1">Contraseña</label>
+     <p>{{form.password1}}</p>
+  </div>
+   <div class="form-group">
+    <label for="password2">Repita la Contraseña</label>
+    <p>{{form.password2}}</p>
+
+  </div>
+  <button type="submit" class="btn btn-default" >Entrar</button>
+</form>
+</div>
+
+
+{% endblock %}
