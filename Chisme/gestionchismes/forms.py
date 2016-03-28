@@ -26,7 +26,7 @@ class UserCreationForm(forms.Form):
 	def clean(self): # check if password 1 and password2 match each other
 		if 'password1' in self.cleaned_data and 'password2' in self.cleaned_data:
 			if self.cleaned_data['password1'] != self.cleaned_data['password2']: 
-				raise forms.ValidationError("la contraseña no coincide con la otra")
+				raise forms.ValidationError("la contrasena no coincide con la otra")
 
 		return self.cleaned_data
 	
