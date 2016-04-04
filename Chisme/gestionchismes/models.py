@@ -1,3 +1,7 @@
+# Copyright [2016] [Leoncio Ramos Carrasco]
+#Licensed under the Apache License, Version 2.0 you may not use this file except in compliance You may obtain a copy of the License at
+
+
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
